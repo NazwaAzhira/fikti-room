@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0" />
+
+  <title>FIKTI Room</title>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css" />
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body>
+
+  <section id="splash" class="screen active">
+    <div class="swiper-container">
+      <div class="slide">
+        <div class="overlay"></div>
+        <div class="splash-content splash-main">
+
+          <img
+            src="assets/logo-umsu.png"
+            class="logo" />
+
+          <h1 class="main-title">
+            FIKTI<br>
+            <span>ROOM</span>
+          </h1>
+
+          <p>
+            Universitas Muhammadiyah
+            Sumatera Utara
+          </p>
+        </div>
+      </div>
+
+      <div class="slide">
+
+        <div class="splash-content center">
+
+          <h1>
+            Monitor<br>
+            <span>Ruangan</span>
+          </h1>
+
+          <p>
+            Pantau status ruangan dan
+            kehadiran dosen secara realtime.
+          </p>
+
+          <div class="preview-card team-card">
+            
+            <div class="team-title">
+              Dikembangkan
+            </div>
+            <div class="team-subtitle">
+              Oleh:
+            </div>
+            
+        <button
+          class="team-btn"
+          onclick="openTeamModal()">
+          Lihat Tim →
+        </button>
+      
+      </div>
+        </div>
+      </div>
+
+      <div class="slide">
+
+        <div class="splash-content center">
+
+          <h1>
+            Realtime<br>
+            <span>Monitoring</span>
+          </h1>
+
+          <p>
+            Relator kelas dapat
+            mengonfirmasi kehadiran dosen
+            secara langsung.
+          </p>
+
+          <button
+            class="start-btn"
+            onclick="finishOnboarding()">
+
+            Mulai
+
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="slider-dots">
+      <div class="dots-track">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <div class="active-indicator"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="role-page" class="screen">
+
+    <div class="role-bg"></div>
+
+    <div class="role-top">
+
+      <img
+        src="assets/logo-umsu.png"
+        class="role-logo">
+
+      <h1>WELCOME</h1>
+
+      <p>
+        Pilih peran anda
+        untuk melanjutkan
+      </p>
+
+    </div>
+    <div class="role-bottom">
+      <h2>Masuk Sebagai</h2>
+
+<div
+  class="role-card purple"
+  onclick="openLoginModal()">
+
+  <div class="role-icon">
+    📋
+  </div>
+
+  <div class="role-text">
+
+    <h3>Relator Kelas</h3>
+
+    <p>
+      Mengonfirmasi kehadiran dosen
+      di ruangan.
+    </p>
+
+  </div>
+
+</div>
+
+      <div
+        class="role-card blue"
+        onclick="loginAs('mahasiswa')">
+
+        <div class="role-icon">
+          🎓
+        </div>
+
+        <div class="role-text">
+
+          <h3>Mahasiswa</h3>
+
+          <p>
+            Melihat ketersediaan ruangan
+            & status dosen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboard" class="screen">
+    <div class="container">
+      <div class="topbar">
+        <div>
+          <h2 id="dashboard-title">
+            Selamat Pagi
+          </h2>
+          <p>
+            Fakultas Ilmu Komputer dan
+            Teknologi Informasi
+          </p>
+        </div>
+        <button
+          class="logout-btn"
+          onclick="logout()">
+
+          Keluar
+
+        </button>
+
+      </div>
+
+      <div class="stats">
+
+        <div class="stat-card green">
+
+          <h4>Aktif</h4>
+
+          <h1 id="aktif-count">
+            0
+          </h1>
+
+          <p>Dosen Masuk</p>
+
+        </div>
+
+        <div class="stat-card yellow">
+
+          <h4>Menunggu</h4>
+
+          <h1 id="menunggu-count">
+            0
+          </h1>
+
+          <p>Menunggu</p>
+
+        </div>
+
+        <div class="stat-card gray">
+
+          <h4>Kosong</h4>
+
+          <h1 id="kosong-count">
+            0
+          </h1>
+
+          <p>Kosong</p>
+
+        </div>
+
+      </div>
+
+      <div class="tabs">
+
+        <button
+          class="tab active"
+          onclick="showFloor(6)">
+
+          Lantai 6
+
+        </button>
+
+        <button
+          class="tab"
+          onclick="showFloor(7)">
+
+          Lantai 7
+
+        </button>
+
+      </div>
+
+      <div
+        id="room-grid"
+        class="room-grid">
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="detail" class="screen">
+
+    <div class="container">
+
+      <button
+        class="back-btn"
+        onclick="backDashboard()">
+
+        ←
+
+      </button>
+
+      <h1
+        id="room-number"
+        class="room-number">
+
+        601
+
+      </h1>
+
+      <div
+        id="status-badge"
+        class="status-badge waiting">
+
+        Menunggu
+
+      </div>
+
+      <div class="detail-card">
+
+        <div class="detail-item">
+
+          <span>Dosen</span>
+
+          <strong id="detail-dosen">
+            -
+          </strong>
+
+        </div>
+
+        <div class="detail-item">
+
+          <span>Mata Kuliah</span>
+
+          <strong id="detail-mk">
+            -
+          </strong>
+
+        </div>
+
+        <div class="detail-item">
+
+          <span>Waktu</span>
+
+          <strong>
+            08:00 - 10:00 WIB
+          </strong>
+
+        </div>
+
+        <div class="detail-item">
+
+          <span>Lantai</span>
+
+          <strong id="detail-floor">
+            6
+          </strong>
+        </div>
+      </div>
+
+      <div
+        id="status-info"
+        class="info-card warning">
+
+        Ada jadwal, belum dikonfirmasi
+        oleh relator kelas.
+
+      </div>
+
+<div id="action-buttons">
+
+  <h3>
+    Konfirmasi Kehadiran Dosen
+  </h3>
+
+  <button
+    class="btn green-btn"
+    onclick="updateStatus('masuk')">
+
+    Dosen Masuk
+
+  </button>
+
+  <button
+    class="btn red-btn"
+    onclick="updateStatus('kosong')">
+
+    Dosen Tidak Masuk
+
+  </button>
+
+  <button
+    class="btn yellow-btn"
+    onclick="updateStatus('menunggu')">
+
+    Menunggu Konfirmasi
+
+  </button>
+
+</div>
+
+      <div id="toast" class="toast hidden">
+        Status berhasil diubah
+      </div>
+    </div>
+
+  </section>
+
+<div id="login-modal" class="login-modal hidden">
+
+  <div class="login-box">
+
+    <h2>Login Relator</h2>
+
+    <p>
+      Masukkan password relator
+      untuk melanjutkan
+    </p>
+
+    <input
+      type="password"
+      id="relator-password"
+      placeholder="Masukkan password">
+
+    <button
+      class="login-btn"
+      onclick="checkRelatorPassword()">
+
+      Masuk
+
+    </button>
+
+    <button
+      class="close-btn"
+      onclick="closeLoginModal()">
+
+      Batal
+
+    </button>
+  </div>
+</div>
+
+<div id="team-modal" class="team-modal hidden">
+  <div class="team-box">
+    <h2>Tim Pengembang</h2>
+    <p class="team-subtitle">
+      FIKTI ROOM
+    </p>
+
+    <div class="team-member">
+      👤 Nazwa Azhira [2309010192]
+    </div>
+
+    <div class="team-member">
+      👤 Annisa Fadiyah [2309010195]
+    </div>
+
+    <div class="team-member">
+      👤 Dina Ade Riani [2309010221]
+    </div>
+
+    <div class="team-member">
+      👤 Tiara Permata Putri [2309010223]
+    </div>
+
+    <div class="team-member">
+      👤 Muhammad Alfair [2309010224]
+    </div>
+
+    <button
+      class="close-team-btn"
+      onclick="closeTeamModal()">
+      Tutup
+    </button>
+  </div>
+</div>
+
+  <script type="module">
+
+    import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+    import {
+      getDatabase,
+      ref,
+      onValue,
+      update
+    }
+    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+    const firebaseConfig = {
+
+      databaseURL:
+      "https://fikti-room-default-rtdb.asia-southeast1.firebasedatabase.app"
+
+    };
+
+    const app =
+      initializeApp(firebaseConfig);
+
+    const db =
+      getDatabase(app);
+
+    window.firebaseDB = db;
+    window.firebaseRef = ref;
+    window.firebaseOnValue = onValue;
+    window.firebaseUpdate = update;
+
+  </script>
+  <script src="cordova.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<widget
+    id="com.fikti.room"
+    version="1.0.0"
+    xmlns="http://www.w3.org/ns/widgets"
+    xmlns:cdv="http://cordova.apache.org/ns/1.0">
+
+    <name>FIKTI ROOM</name>
+
+    <description>
+        Monitoring Kehadiran Dosen FIKTI
+    </description>
+
+    <author email="you@email.com">
+        FIKTI ROOM
+    </author>
+
+    <content src="index.html" />
+
+    <!-- INTERNET -->
+
+    <access origin="*" />
+
+    <allow-navigation href="*" />
+
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+
+    <!-- ANDROID -->
+
+    <platform name="android">
+
+        <allow-navigation href="http://*/*" />
+        <allow-navigation href="https://*/*" />
+
+        <preference
+            name="AndroidInsecureFileModeEnabled"
+            value="true" />
+
+    </platform>
+
+    <!-- WEBVIEW -->
+
+    <preference
+        name="Scheme"
+        value="https" />
+
+    <preference
+        name="Hostname"
+        value="localhost" />
+
+    <!-- SPLASH -->
+
+    <preference
+        name="AndroidWindowSplashScreenBackground"
+        value="#0F172A" />
+
+    <preference
+        name="SplashScreenDelay"
+        value="0" />
+
+    <preference
+        name="AutoHideSplashScreen"
+        value="true" />
+
+</widget>
